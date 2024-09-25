@@ -19,12 +19,12 @@
                 <h2>Enter OTP</h2>
 
                 <div class="otp-group">
-                    <input type="text" maxlength="1" class="otp-input" id="otp1" oninput="moveToNext(this, 'otp2')" autofocus>
-                    <input type="text" maxlength="1" class="otp-input" id="otp2" oninput="moveToNext(this, 'otp3')">
-                    <input type="text" maxlength="1" class="otp-input" id="otp3" oninput="moveToNext(this, 'otp4')">
-                    <input type="text" maxlength="1" class="otp-input" id="otp4" oninput="moveToNext(this, 'otp5')">
-                    <input type="text" maxlength="1" class="otp-input" id="otp5" oninput="moveToNext(this, 'otp6')">
-                    <input type="text" maxlength="1" class="otp-input" id="otp6" oninput="moveToNext(this, '')">
+                    <input type="text" maxlength="1" class="otp-input" id="otp1" inputmode="numeric" pattern="[0-9]*" oninput="moveToNext(this, 'otp2')" autofocus>
+                    <input type="text" maxlength="1" class="otp-input" id="otp2" inputmode="numeric" pattern="[0-9]*" oninput="moveToNext(this, 'otp3')">
+                    <input type="text" maxlength="1" class="otp-input" id="otp3" inputmode="numeric" pattern="[0-9]*" oninput="moveToNext(this, 'otp4')">
+                    <input type="text" maxlength="1" class="otp-input" id="otp4" inputmode="numeric" pattern="[0-9]*" oninput="moveToNext(this, 'otp5')">
+                    <input type="text" maxlength="1" class="otp-input" id="otp5" inputmode="numeric" pattern="[0-9]*" oninput="moveToNext(this, 'otp6')">
+                    <input type="text" maxlength="1" class="otp-input" id="otp6" inputmode="numeric" pattern="[0-9]*" oninput="moveToNext(this, '')">
                 </div>
                 <div class="fingerprint-title">
                     Press & Hold For Login

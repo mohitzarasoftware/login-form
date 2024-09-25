@@ -94,7 +94,6 @@ button.addEventListener('pointerleave', cancelPressTimer);
 
 
 // opt js
-// Function to move to the next input box
 function moveToNext(current, nextId) {
     if (current.value.length == 1) {
         if (nextId) {
@@ -102,10 +101,22 @@ function moveToNext(current, nextId) {
         }
     }
 }
-
-// Restrict input to numbers only
 document.querySelectorAll('.otp-input').forEach(function(input) {
     input.addEventListener('input', function() {
-        this.value = this.value.replace(/[^0-9]/g, ''); // Only allow numbers
+        this.value = this.value.replace(/[^0-9]/g, '');
     });
 });
+document.body.addEventListener('click', function(e) {
+    if (!e.target.classList.contains('otp-input')) {}
+});
+
+function clearOtpOneByOne() {
+    const otpInputs = document.querySelectorAll('.otp-input');
+    for (let i = otpInputs.length - 1; i >= 0; i--) {
+        if (otpInputs[i].value !== '') {
+            otpInputs[i].value = '';
+            otpInputs[i].focus();
+            break;
+        }
+    }
+}

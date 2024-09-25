@@ -1,0 +1,323 @@
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Roboto Serif", serif;
+    }
+    
+    body,
+    html {
+        font-family: "Roboto Serif", serif;
+    }
+    
+    section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        background: url(background.jpg) no-repeat;
+        background-size: cover;
+        background-position: center;
+        animation: animateBg 5s linear infinite;
+    }
+    
+    @keyframes animateBg {
+        100% {
+            filter: hue-rotate(360deg);
+        }
+    }
+    
+    .login-box {
+        position: relative;
+        width: 400px;
+        height: 450px;
+        background: transparent;
+        border: 2px solid rgba(255, 255, 255, .5);
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        backdrop-filter: blur(15px);
+        flex-direction: column;
+    }
+    
+    h2 {
+        font-size: 2rem;
+        color: #fff;
+        text-align: center;
+        margin-top: 30px;
+    }
+    
+    .input-box {
+        position: relative;
+        width: 310px;
+        margin: 30px 0;
+        border-bottom: 2px solid #fff;
+    }
+    
+    .input-box label {
+        position: absolute;
+        top: 50%;
+        left: 5px;
+        transform: translateY(-50%);
+        font-size: 1rem;
+        color: #fff;
+        pointer-events: none;
+        transition: .5s;
+    }
+    
+    .input-box input:focus~label,
+    .input-box input:valid~label {
+        top: -5px;
+    }
+    
+    .input-box input {
+        width: 100%;
+        height: 50px;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-size: 1rem;
+        color: #fff;
+        padding: 0 35px 0 5px;
+    }
+    
+    .input-box .icon {
+        position: absolute;
+        right: 8px;
+        color: #fff;
+        font-size: 1.2rem;
+        line-height: 57px;
+    }
+    
+    .remember-forgot {
+        margin: -15px 0 15px;
+        font-size: .9rem;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .remember-forgot label input {
+        margin-right: .3rem;
+    }
+    
+    .remember-forgot a {
+        color: #fff;
+        text-decoration: none;
+    }
+    
+    .remember-forgot a:hover {
+        text-decoration: underline;
+    }
+    /* button {
+    width: 100%;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    color: #000;
+    font-weight: 500;
+    font-size: 20px;
+    padding: 13px;
+    cursor: pointer !important;
+} */
+    
+    .register {
+        font-size: .9rem;
+        color: #fff;
+        text-align: center;
+        margin: 25px 0 10px;
+    }
+    
+    .register p a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+    }
+    
+    .register p a:hover {
+        text-decoration: underline;
+    }
+    
+    @media(max-width:450px) {
+        .login-box {
+            width: 100%;
+            height: 100vh;
+            border: none;
+        }
+    }
+    
+    .inspiration {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        font-family: 'Gill Sans', sans-serif;
+        font-size: 12px;
+        color: #7f7f7f;
+    }
+    
+    .center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+    }
+    
+    .fingerprint-btn {
+        background-color: transparent;
+        padding: 0;
+        border: 0;
+        position: relative;
+        display: flex;
+        z-index: 2;
+    }
+    
+    .fingerprint-title {
+        color: #fff;
+        margin-bottom: 14px;
+        margin-top: 8px;
+        text-align: center;
+    }
+    
+    .center svg.fingerprint path.clone {
+        transition: stroke-dashoffset 2s ease-out;
+        -webkit-animation: try 2.5s ease-out;
+        animation: try 2.5s ease-out;
+    }
+    
+    .center svg.fingerprint.active {
+        transform: scale(0.97);
+    }
+    
+    .center svg.fingerprint.active path.clone {
+        stroke-dashoffset: 0;
+    }
+    
+    h1 {
+        font-size: 30px;
+        transform: translateY(-50px);
+    }
+    
+    .scan,
+    .scan-success {
+        font-size: 15px;
+        transform: translateY(50px);
+        color: #666;
+    }
+    
+    .scan-success {
+        display: none;
+    }
+    
+    .center .fingerprint,
+    .center .icon-success {
+        width: 65px;
+        height: 65px;
+        overflow: visible;
+    }
+    
+    .center .icon-success {
+        position: absolute;
+        top: 0px;
+    }
+    
+    .center .icon-success circle {
+        transform-origin: 50% 50%;
+        transform: scale(0);
+        transition: transform 200ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    }
+    
+    .center .icon-success path {
+        opacity: 0;
+        transition: stroke-dashoffset 350ms 100ms ease;
+    }
+    
+    .center.success .fingerprint {
+        transform: scale(0);
+    }
+    
+    .center.success .icon-success circle {
+        transform: scale(1);
+    }
+    
+    .center.success .icon-success path {
+        stroke-dashoffset: 0;
+        opacity: 1;
+        transition: opacity 0s, stroke-dashoffset 0.5s;
+    }
+    
+    .center.success .scan {
+        display: none;
+    }
+    
+    .center.success .scan-success {
+        display: block;
+    }
+    
+    @-webkit-keyframes try {
+        0%,
+        100% {
+            stroke-dashoffset: 178;
+        }
+        50% {
+            stroke-dashoffset: 100;
+        }
+    }
+    
+    @keyframes try {
+        0%,
+        100% {
+            stroke-dashoffset: 178;
+        }
+        50% {
+            stroke-dashoffset: 100;
+        }
+    }
+    
+    .form-date {
+        font-size: 15px;
+        color: #fff;
+    }
+    
+    .otp-box {
+        height: auto;
+        padding: 30px;
+    }
+    
+    .otp-group {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 25px;
+        margin-bottom: 40px;
+    }
+    
+    .otp-group input {
+        width: 50px;
+        height: 50px;
+        border: 0;
+        outline: none;
+        background-color: transparent;
+        text-align: center;
+        color: #fff;
+        border-bottom: 2px solid #fff;
+    }
+    
+    @media (max-width: 450px) {
+        .otp-group {
+            gap: 12px;
+        }
+        .login-box {
+            height: 100vh;
+        }
+        .otp-group input {
+            width: 40px;
+            height: 40px;
+        }
+    }

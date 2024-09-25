@@ -17,14 +17,13 @@
             <div id="currentDate" class="form-date"></div>
             <form action="#" method="POST">
                 <h2>Enter OTP</h2>
-
-                <div class="otp-group">
-                    <input type="text" maxlength="1" class="otp-input" id="otp1" inputmode="numeric" pattern="[0-9]*" oninput="moveToNext(this, 'otp2')" autofocus>
-                    <input type="text" maxlength="1" class="otp-input" id="otp2" inputmode="numeric" pattern="[0-9]*" oninput="moveToNext(this, 'otp3')">
-                    <input type="text" maxlength="1" class="otp-input" id="otp3" inputmode="numeric" pattern="[0-9]*" oninput="moveToNext(this, 'otp4')">
-                    <input type="text" maxlength="1" class="otp-input" id="otp4" inputmode="numeric" pattern="[0-9]*" oninput="moveToNext(this, 'otp5')">
-                    <input type="text" maxlength="1" class="otp-input" id="otp5" inputmode="numeric" pattern="[0-9]*" oninput="moveToNext(this, 'otp6')">
-                    <input type="text" maxlength="1" class="otp-input" id="otp6" inputmode="numeric" pattern="[0-9]*" oninput="moveToNext(this, '')">
+                <div class="input-field otp-group">
+                    <input class="otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(1)' maxlength=1>
+                    <input class="otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(2)' maxlength=1>
+                    <input class="otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(3)' maxlength=1>
+                    <input class="otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(4)' maxlength=1>
+                    <input class="otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange(5)' maxlength=1>
+                    <input class="otp" type="text" oninput='digitValidate(this)' onkeyup='tabChange()' maxlength=1>
                 </div>
                 <div class="fingerprint-title">
                     Press & Hold For Login
@@ -54,6 +53,21 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="script.js"></script>
+
+    <script>
+        let digitValidate = function(ele) {
+            console.log(ele.value);
+            ele.value = ele.value.replace(/[^0-9]/g, '');
+        }
+        let tabChange = function(val) {
+            let ele = document.querySelectorAll('input');
+            if (ele[val - 1].value != '') {
+                ele[val].focus()
+            } else if (ele[val - 1].value == '') {
+                ele[val - 2].focus()
+            }
+        }
+    </script>
 </body>
 
 </html>

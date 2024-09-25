@@ -93,7 +93,9 @@ button.addEventListener('pointerup', cancelPressTimer);
 button.addEventListener('pointerleave', cancelPressTimer);
 
 
-// opt js
+
+// opt js // Function to move to the next input box
+// Function to move to the next input box
 function moveToNext(current, nextId) {
     if (current.value.length == 1) {
         if (nextId) {
@@ -101,22 +103,31 @@ function moveToNext(current, nextId) {
         }
     }
 }
+
+// Restrict input to numbers only
 document.querySelectorAll('.otp-input').forEach(function(input) {
     input.addEventListener('input', function() {
-        this.value = this.value.replace(/[^0-9]/g, '');
+        this.value = this.value.replace(/[^0-9]/g, ''); // Only allow numbers
     });
 });
-document.body.addEventListener('click', function(e) {
-    if (!e.target.classList.contains('otp-input')) {}
-});
 
-function clearOtpOneByOne() {
+// Function to clear the last filled OTP input one by one when the "Back" button is clicked or Backspace is pressed
+function clearLastOtp() {
     const otpInputs = document.querySelectorAll('.otp-input');
+    // Iterate in reverse to find the last filled input and clear it
     for (let i = otpInputs.length - 1; i >= 0; i--) {
         if (otpInputs[i].value !== '') {
-            otpInputs[i].value = '';
-            otpInputs[i].focus();
-            break;
+            otpInputs[i].value = ''; // Clear the last filled input
+            otpInputs[i].focus(); // Focus back on the cleared input
+            break; // Stop after clearing one input
         }
     }
 }
+
+// Add event listener for keydown event to detect the backspace key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Backspace') {
+        clearLastOtp();
+        event.preventDefault(); // Prevent the default backspace action (like scrolling back)
+    }
+});
